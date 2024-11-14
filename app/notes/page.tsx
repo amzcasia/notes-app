@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import CreateNote from './CreateNote';
+import DeleteNoteButton from '../components/DeleteNoteButton';
 
 async function getNotes() {
     const res = await fetch('http://127.0.0.1:8090/api/collections/notes_app/records?page=1&perPage=30', { cache: 'no-store' });
@@ -27,7 +28,7 @@ export default async function Notes(){
     return(
         <div>
             <h1>Notes</h1>
-            <div className='grid w-96'>
+            <div className='grid w-1/2'>
                 {notes?.map((note)=>{
                     return <Note key={note.id} note={note} />
                 })}
@@ -42,12 +43,17 @@ function Note({ note }: any){
     const {id,title,content,created} = note || {};
 
     return (
-        <Link  href={`/notes/${id}`}>
-            <div className="border border-white m-2 p-2 bg-yellow-500 text-black rounded-md">
-                <h2 className='font-bold text-lg'>{title}</h2>
-                <h5>{content}</h5>
-                <p>{created}</p>
+        <div  className="border border-yellow-700 m-1 p-2 bg-yellow-500 text-black rounded-md relative">
+            <div className='flex justify-end'>
+                <DeleteNoteButton noteId={id}/>
             </div>
-        </Link>
+            <Link  href={`/notes/${id}`}>
+                <div>
+                    <h2 className='font-bold text-lg'>{title}</h2>
+                    <h5>{content}</h5>
+                    <p className='text-sm text-gray-700'>{created}</p>
+                </div>
+            </Link>
+        </div>
     )
 }

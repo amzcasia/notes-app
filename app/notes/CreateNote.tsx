@@ -1,15 +1,15 @@
 'use client';
 
 import { useState } from "react"
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function CreateNote(){
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    // const router = useRouter();
+    const router = useRouter();
     // const router = useRouter();
 
-    const create = async() => {
+    const create = async(e:any) => {
         // await fetch('http://127.0.0.1:8090/api/collections/notes_app/records', {
 
         //     // api/collections/notes_app/records/
@@ -23,27 +23,34 @@ export default function CreateNote(){
         //     // }),
         //     body: '{"title": "Sample Title", "content": "This is the content of the note."}',  // Hardcoded JSON string
         // });
-
-
+        
+        e.preventDefault();
         await fetch('http://127.0.0.1:8090/api/collections/notes_app/records', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                // 'datatype': "json",
             },
-            body: '{"title": "Sample Title", "content": "This is the content of the note."}',  // Hardcoded JSON string
+            // body: '{"title": "Sample Title", "content": "This is the content of the note."}',  // Hardcoded JSON string
+            body: JSON.stringify({
+                title,
+                content,
+            }),
         });
+
+        // return false;
 
         setContent('');
         setTitle('');
         
-        // router.refresh();
+        router.refresh();
     }
 
     return(
-        // <div className="w-96">
-        //     <div>
-        //         <p>Create a new Note</p>
-        //     </div>
+        <div className="w-1/2">
+            <div>
+                <p>Create a new Note</p>
+            </div>
             <form className="flex flex-col space-y-2 justify-center text-black" onSubmit={create}>
                 <input
                     className="px-2"
@@ -62,6 +69,6 @@ export default function CreateNote(){
                     Create note
                 </button>
             </form>
-        // </div>
+        </div>
     );
 }
