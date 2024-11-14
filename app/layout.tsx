@@ -15,11 +15,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <nav>
-          <ul>
-            <li>
+          <ul className='flex p-1 space-x-2'>
+            <li className='border border-white rounded-md p-1 px-2'>
               <Link href="/">Home</Link>
             </li>
-            <li>
+            <li className='border border-white rounded-md p-1 px-2'>
               <Link href="/notes">Notes</Link>
             </li>
           </ul>
