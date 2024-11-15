@@ -30,7 +30,7 @@ export default async function Notes(){
             <h1>Notes</h1>
             <div className='grid w-full'>
                 {notes?.map((note)=>{
-                    return <Note key={note.id} note={note} />
+                    return <NoteList key={note.id} note={note} />
                 })}
             </div>
             <CreateNote />
@@ -39,7 +39,7 @@ export default async function Notes(){
 }
 
 
-function Note({ note }: any){
+function NoteList({ note }: any){
     const {id,title,content,created} = note || {};
 
     return (
@@ -51,7 +51,7 @@ function Note({ note }: any){
                 <div>
                     <h2 className='font-bold text-lg'>{title}</h2>
                     <h5>{content}</h5>
-                    <p className='text-sm text-gray-700'>{created}</p>
+                    <p className='text-xs text-gray-700'>{created}</p>
                 </div>
             </Link>
         </div>

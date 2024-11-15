@@ -21,7 +21,7 @@ export default function DeleteNoteButton( { noteId }: any ){
 
     return(
             <button className='px-1 text-red-600 font-bold absolute right-1 top-1 hover:text-red-400' onClick={deleteNote}>
-                x
+                Delete
             </button>
     )
 }

@@ -7,11 +7,11 @@
     {
       "collectionId": "vsy8jvkb845zy8n",
       "collectionName": "notes_app",
-      "content": "Content",
-      "created": "2024-11-15 05:27:19.891Z",
-      "id": "s2qiywla3a3d7sl",
-      "title": "Title",
-      "updated": "2024-11-15 05:27:19.891Z"
+      "content": "content updated from db ",
+      "created": "2024-11-15 08:37:39.545Z",
+      "id": "mmlks8h6c0q3j6y",
+      "title": "updated from dbddddddddddddddddddddddddddddddddddddddd",
+      "updated": "2024-11-15 08:43:55.256Z"
     }
   ]
 }

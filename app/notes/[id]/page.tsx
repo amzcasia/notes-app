@@ -1,24 +1,52 @@
-// 'use client';
+
+'use client';
 
 import DeleteNoteButton from "@/app/components/DeleteNoteButton";
-import TestButton from "@/app/components/TestButton";
-import Link from "next/link";
-// import { useState } from "react"
-
-async function getNote(noteId: string) {
-    const res = await fetch(`http://127.0.0.1:8090/api/collections/notes_app/records/${noteId}`, { next: {revalidate: 10}});
-    
-    const data = await res.json();
-    return data;
+import EditNote from "./EditNote";
+// import UpdateButton from "./UpdateButton";
+import { useState,useEffect, use } from "react";
+import UpdateButton from "./UpdateButton";
+import Link from 'next/link';
 
 
 
-}
+// async function getNote(noteId: string) {
+//     const res = await fetch(`http://127.0.0.1:8090/api/collections/notes_app/records/${noteId}`, { next: {revalidate: 10}});
+//     const data = await res.json();
+//     console.log('fetchingggssgassgasg')
+//     return data;
+// }
 
-export default async function Note({params} : any){
+
+
+// export default async function Note({params} : any){
+export default function Note({params} : any){
+
     // try{
-    const note = await getNote(params.id)
-    // const [content, setContent] = useState('');
+    // const note = await getNote(params.id)
+    const [note, setNote] = useState<any>(null);
+
+    useEffect(()=>{
+        const fetchNote = async () =>{
+            const res = await fetch(`http://127.0.0.1:8090/api/collections/notes_app/records/${params.id}`, { next: {revalidate: 10}});
+            const data = await res.json();
+            setNote(data);
+        }
+        fetchNote();
+    }, []);
+
+    if (!note) return <div>Loading...</div>;
+
+    // const [newNote, setNewNote] = useState(note);
+
+    // useEffect(() => {
+    //     setNewNote(newNote);
+    // }, []);
+    const handleNoteUpdate = (updatedNote: any) => {
+        setNote(updatedNote)
+    }
+
+    // 
     // }catch (error) {
         // console.error('Failed to get note data:', error);
     // }
@@ -27,23 +55,18 @@ export default async function Note({params} : any){
             <div className="flex justify-between">
                 <div>
                     <Link href={"/notes"}>
-                        <p className="text-md text-yellow-800 font-semibold hover:text-yellow-600">Back</p>
+                        <button className="text-md text-yellow-800 font-semibold hover:text-yellow-600">Back</button>
                     </Link>
                 </div>
                 <div className="relative">
                     <DeleteNoteButton noteId={note.id}/>
                 </div>
             </div>
-            <div className="grid space-y-2">
-                <p className="text-lg font-bold cursor-text border border-yellow-700 px-2">{note.title}</p>
-                <p 
-                    className=" cursor-text border border-yellow-700 px-2 bg-yellow-500" 
-                    // onChange={(e) => setContent(e.target.value)}
-                    // value={content}
-                >
-                    {note.content}
-                </p>
-                <p className="text-sm cursor-default text-gray-500">{note.created}</p>
+            <div>
+                <EditNote note={note} onNoteUpdate={handleNoteUpdate}/>
+            </div>
+            <div>
+                <UpdateButton note={note}/>
             </div>
         </div>
     )
