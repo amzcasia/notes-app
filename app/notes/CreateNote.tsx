@@ -47,26 +47,26 @@ export default function CreateNote(){
     }
 
     return(
-        <div className="w-1/2">
+        <div className="w-full mt-2">
             <div>
                 <p>Create a new Note</p>
             </div>
-            <form className="flex flex-col space-y-2 justify-center text-black" onSubmit={create}>
+            <form className="flex flex-col space-y-2 items-center text-black" onSubmit={create}>
                 <input
-                    className="px-2"
+                    className="px-2 rounded-md w-full"
                     type="text"
                     placeholder="Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}>
                 </input>
                 <textarea
-                    className="px-2 py-1"
+                    className="px-2 py-1 rounded-md w-full"
                     placeholder="Content"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}>
                 </textarea>
-                <button className="bg-yellow-400 border text-black" type="submit">
-                    Create note
+                <button className="bg-yellow-400 border text-black rounded-md px-4 py-1" type="submit">
+                    Save
                 </button>
             </form>
         </div>

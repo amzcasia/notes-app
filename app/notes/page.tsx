@@ -26,9 +26,9 @@ export default async function Notes(){
     const notes = await getNotes();
 
     return(
-        <div>
+        <div className='flex flex-col items-center w-[40vw]'>
             <h1>Notes</h1>
-            <div className='grid w-1/2'>
+            <div className='grid w-full'>
                 {notes?.map((note)=>{
                     return <Note key={note.id} note={note} />
                 })}

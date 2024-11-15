@@ -22,10 +22,10 @@ export default function Home(){
   // }
 
   return (
-    <div>
+    <div className="grid">
       <h1>This is the Home Page</h1>
-      <p>Some content
-
+      <p>
+        Some content
       </p>
     </div>
   );

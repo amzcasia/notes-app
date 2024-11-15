@@ -16,15 +16,15 @@ export default function RootLayout({
       <body>
         <nav>
           <ul className='flex p-1 space-x-2'>
-            <li className='border border-white rounded-md p-1 px-2'>
+            <li className='border border-white rounded-md p-1 px-2 hover:bg-gray-800'>
               <Link href="/">Home</Link>
             </li>
-            <li className='border border-white rounded-md p-1 px-2'>
+            <li className='border border-white rounded-md p-1 px-2 hover:bg-gray-800'>
               <Link href="/notes">Notes</Link>
             </li>
           </ul>
         </nav>
-        <main>
+        <main className='flex justify-center'>
           {children}
         </main>
       </body>
