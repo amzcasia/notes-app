@@ -3,7 +3,7 @@ import CreateNote from './CreateNote';
 import DeleteNoteButton from '../components/DeleteNoteButton';
 
 async function getNotes() {
-    const res = await fetch('http://127.0.0.1:8090/api/collections/notes_app/records?page=1&perPage=30', { cache: 'no-store' });
+    const res = await fetch('https://zgecxo.pockethost.io/api/collections/notes_app/records?page=1&perPage=30', { cache: 'no-store' });
     
     const data = await res.json();
 

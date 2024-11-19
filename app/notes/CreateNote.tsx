@@ -25,7 +25,7 @@ export default function CreateNote(){
         // });
         
         e.preventDefault();
-        await fetch('http://127.0.0.1:8090/api/collections/notes_app/records', {
+        await fetch('https://zgecxo.pockethost.io/api/collections/notes_app/records', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

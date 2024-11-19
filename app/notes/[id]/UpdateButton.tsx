@@ -11,7 +11,7 @@ export default function UpdateButton( { note }: any ){
 
         e.preventDefault();
         try{
-            await fetch(`http://127.0.0.1:8090/api/collections/notes_app/records/${id}`, {
+            await fetch(`https://zgecxo.pockethost.io/api/collections/notes_app/records/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

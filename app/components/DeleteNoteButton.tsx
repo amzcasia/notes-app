@@ -10,7 +10,7 @@ export default function DeleteNoteButton( { noteId }: any ){
 
         e.preventDefault();
         try{
-            await fetch(`http://127.0.0.1:8090/api/collections/notes_app/records/${noteId}`, {
+            await fetch(`https://zgecxo.pockethost.io/api/collections/notes_app/records/${noteId}`, {
                 method: 'DELETE',
             });
             router.push('/notes');
