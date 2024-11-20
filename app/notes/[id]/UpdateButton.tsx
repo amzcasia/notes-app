@@ -1,7 +1,9 @@
 'use client';
 import { create } from "domain";
 import { useRouter } from "next/navigation";
-    
+
+const NEXT_PUBLIC_DATABASE_URL = process.env.NEXT_PUBLIC_DATABASE_URL;
+
 export default function UpdateButton( { note }: any ){
     const {id,title,content,created} = note || {};
     // const newNoteId = noteId
@@ -11,7 +13,10 @@ export default function UpdateButton( { note }: any ){
 
         e.preventDefault();
         try{
-            await fetch(`https://zgecxo.pockethost.io/api/collections/notes_app/records/${id}`, {
+            
+            // await fetch(`https://zgecxo.pockethost.io/api/collections/notes_app/records/${id}`, {
+            await fetch(`${NEXT_PUBLIC_DATABASE_URL}/api/collections/notes_app/records/${id}`, {
+
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

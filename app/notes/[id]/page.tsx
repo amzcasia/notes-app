@@ -8,7 +8,7 @@ import { useState,useEffect, use } from "react";
 import UpdateButton from "./UpdateButton";
 import Link from 'next/link';
 
-
+const NEXT_PUBLIC_DATABASE_URL = process.env.NEXT_PUBLIC_DATABASE_URL;
 
 // async function getNote(noteId: string) {
 //     const res = await fetch(`http://127.0.0.1:8090/api/collections/notes_app/records/${noteId}`, { next: {revalidate: 10}});
@@ -28,7 +28,10 @@ export default function Note({params} : any){
 
     useEffect(()=>{
         const fetchNote = async () =>{
-            const res = await fetch(`https://zgecxo.pockethost.io/api/collections/notes_app/records/${params.id}`, { next: {revalidate: 10}});
+            // const res = await fetch(`https://zgecxo.pockethost.io/api/collections/notes_app/records/${params.id}`, { next: {revalidate: 10}});
+
+            const res = await fetch(`${NEXT_PUBLIC_DATABASE_URL}/api/collections/notes_app/records/${params.id}`, { next: {revalidate: 10}});
+
             const data = await res.json();
             setNote(data);
         }

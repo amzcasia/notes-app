@@ -3,7 +3,10 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation";
 
+// const DATABASE_URL = process.env.DATABASE_URL;
+
 export default function CreateNote(){
+    const NEXT_PUBLIC_DATABASE_URL = process.env.NEXT_PUBLIC_DATABASE_URL;
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const router = useRouter();
@@ -25,7 +28,9 @@ export default function CreateNote(){
         // });
         
         e.preventDefault();
-        await fetch('https://zgecxo.pockethost.io/api/collections/notes_app/records', {
+        
+        // await fetch('https://zgecxo.pockethost.io/api/collections/notes_app/records', {
+        await fetch(`${NEXT_PUBLIC_DATABASE_URL}/api/collections/notes_app/records`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

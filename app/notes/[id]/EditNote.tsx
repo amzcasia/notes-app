@@ -18,7 +18,6 @@ export default function EditNote( {note,onNoteUpdate}: any){
 
     useEffect(() => {
         onNoteUpdate({...note, title, content});
-        console.log("note updated")
     }, [title,content]);
 
     return(

@@ -2,8 +2,12 @@ import Link from 'next/link';
 import CreateNote from './CreateNote';
 import DeleteNoteButton from '../components/DeleteNoteButton';
 
+const DATABASE_URL = process.env.DATABASE_URL;
+
 async function getNotes() {
-    const res = await fetch('https://zgecxo.pockethost.io/api/collections/notes_app/records?page=1&perPage=30', { cache: 'no-store' });
+    // const res = await fetch('https://zgecxo.pockethost.io/api/collections/notes_app/records?page=1&perPage=30', { cache: 'no-store' });
+    const res = await fetch(`${DATABASE_URL}/api/collections/notes_app/records?page=1&perPage=30`, { cache: 'no-store' });
+
     
     const data = await res.json();
 
